@@ -49,20 +49,11 @@ public class GameTest {
         assertMatchedNumber(game.guess("456"), false, 0, 0);
     }
 
-    private void generateQuestion(String questionNumber) {
-        game.question = questionNumber;
-    }
-
-    private static void assertMatchedNumber(GuessResult result, boolean solved, int strikes, int balls) {
-        assertThat(result).isNotNull();
-        assertThat(result.isSolved()).isEqualTo(solved);
-        assertThat(result.getStrikes()).isEqualTo(strikes);
-        assertThat(result.getBalls()).isEqualTo(balls);
-    }
 
     @Test
-    public void 스트라이크만_있을_경우_1_strike_0_ball() {
-
+    public void 스트라이크만_있을_경우_2_strike_0_ball() {
+        generateQuestion("123");
+        assertMatchedNumber(game.guess("120"), false, 2, 0);
     }
 
     @Test
@@ -74,4 +65,16 @@ public class GameTest {
     public void 볼과_스트라이크가_함께_있을_경우_1_strike_1_ball() {
 
     }
+
+    private void generateQuestion(String questionNumber) {
+        game.question = questionNumber;
+    }
+
+    private static void assertMatchedNumber(GuessResult result, boolean solved, int strikes, int balls) {
+        assertThat(result).isNotNull();
+        assertThat(result.isSolved()).isEqualTo(solved);
+        assertThat(result.getStrikes()).isEqualTo(strikes);
+        assertThat(result.getBalls()).isEqualTo(balls);
+    }
+
 }
