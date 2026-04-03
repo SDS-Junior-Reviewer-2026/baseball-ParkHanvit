@@ -7,7 +7,19 @@ public class GuessResult {
         this.balls = balls;
     }
 
-    public boolean solved;
-    public int strikes;
-    public int balls;
+    private boolean solved;
+    private int strikes;
+    private int balls;
+
+    public boolean isSolved() {
+        return solved;
+    }
+
+    public int getStrikes() {
+        return strikes;
+    }
+
+    public int getBalls() {
+        return balls;
+    }
 }
