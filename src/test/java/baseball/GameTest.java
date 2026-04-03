@@ -38,36 +38,32 @@ public class GameTest {
     }
 
     @Test
-    public void 숫자_세개가_전부_일치_할_경우_3_strike() {
+    public void returnSolvedResultIfAllNumbersMatched() {
         generateQuestion("123");
         assertMatchedNumber(game.guess("123"), true, 3, 0);
     }
 
     @Test
-    public void 숫자_세개가_전부_일치_하지_않을_경우_0_strike_0_ball() {
+    public void returnZeroResultIfAllNumbersNotMatched() {
         generateQuestion("123");
         assertMatchedNumber(game.guess("456"), false, 0, 0);
     }
 
 
     @Test
-    public void 스트라이크만_있을_경우_2_strike_0_ball() {
+    public void returnStrikesIfSomeNumbersMatched() {
         generateQuestion("123");
         assertMatchedNumber(game.guess("120"), false, 2, 0);
     }
 
     @Test
-    public void returnUnsolvedResultIfSomeMatchedNumber() {
+    public void returnUnsolvedResultIfSomeNumberMatched() {
         generateQuestion("123");
         assertMatchedNumber(game.guess("120"), false, 2, 0);
         assertMatchedNumber(game.guess("061"), false, 0, 1);
         assertMatchedNumber(game.guess("136"), false, 1, 1);
     }
 
-    @Test
-    public void 볼과_스트라이크가_함께_있을_경우_1_strike_1_ball() {
-
-    }
 
     private void generateQuestion(String questionNumber) {
         game.question = questionNumber;
